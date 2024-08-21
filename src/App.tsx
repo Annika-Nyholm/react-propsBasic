@@ -20,6 +20,14 @@ function App() {
 		setObjects(objects.filter((obj) => obj.id !== id));
 	};
 
+	const updateAnimal = (id: number, updatedProperties: Partial<Object>) => {
+		setObjects(
+			objects.map((obj) =>
+				obj.id === id ? { ...obj, ...updatedProperties } : obj
+			)
+		);
+	};
+
 	return (
 		<>
 			<RecieverOfData name={'Bosse'} age={10} idiot={true} />
@@ -28,6 +36,7 @@ function App() {
 				title='myAnimals'
 				addNewAnimal={addNewAnimal}
 				deleteAnimal={removeAnimal}
+				updateAnimal={updateAnimal}
 				objectCount={objects.length}
 			/>
 		</>
